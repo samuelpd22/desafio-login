@@ -67,7 +67,7 @@ A aplicação segue o padrão **MVC (Model-View-Controller)**:
 
 ### 📥 6.1 Clonando o Repositório
 ```sh
-git clone https://github.com/seu-usuario/fidelity.git
+git clone https://github.com/samuelpd22/desafio-login.git
 cd fidelity
 ```
 
