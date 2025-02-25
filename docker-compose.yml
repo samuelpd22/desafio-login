@@ -16,7 +16,7 @@ services:
 
   api:
     build: .
-    container_name: django_api
+    container_name: django_Api
     restart: always
     depends_on:
       - db
@@ -30,7 +30,9 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
-    entrypoint: ["/app/entrypoint.sh"]
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
 
 volumes:
   postgres_data:
