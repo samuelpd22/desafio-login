@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro | Fidelity</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        .registro-container {
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .card {
+            border-radius: 10px;
+            border: none;
+        }
+        .card-header {
+            background-color: #ffffff;
+            border-bottom: none;
+            padding: 1.5rem 1.5rem 0.5rem;
+            border-radius: 10px 10px 0 0 !important;
+        }
+        .card-body {
+            padding: 1.5rem;
+        }
+        .logo-area {
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+        .logo-placeholder {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto;
+            background-color:#198754;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        .form-control {
+            padding: 0.8rem 1rem;
+            border-radius: 7px;
+            transition: all 0.3s;
+        }
+        .form-control:focus {
+            box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+            border-color: #198754;
+        }
+        .input-group-text {
+            border-radius: 7px 0 0 7px;
+            background-color: #f8f9fa;
+            border-right: none;
+        }
+        .form-control {
+            border-left: none;
+            border-radius: 0 7px 7px 0;
+        }
+        .btn-primary {
+            padding: 0.8rem;
+            border-radius: 7px;
+            font-weight: 600;
+            transition: all 0.3s;
+            background-color:#198754;
+            border-color: #198754;
+        }
+        .btn-primary:hover {
+            background-color: #198754;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .btn-secondary {
+            padding: 0.8rem;
+            border-radius: 7px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .password-rules {
+            background: #f8f9fa;
+            border-left: 5px solid#198754;
+            padding: 15px;
+            font-size: 0.9rem;
+            margin-top: 10px;
+            border-radius: 7px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s;
+        }
+        .password-rules:hover {
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        .password-rules ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .password-rules li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 5px;
+        }
+        .password-rules li:last-child {
+            margin-bottom: 0;
+        }
+        .password-rules i {
+            color:#198754;
+            font-size: 1rem;
+        }
+        .alert {
+            border-radius: 7px;
+            padding: 0.8rem 1rem;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        .text-danger {
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @media (max-width: 576px) {
+            .card {
+                width: 100% !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container registro-container d-flex justify-content-center align-items-center min-vh-100">
+        <div class="card shadow-lg" style="width: 450px;">
+            <div class="card-header text-center">
+                <div class="logo-area">
+                    <div class="logo-placeholder">
+                        <i class="fas fa-user-plus"></i>
+                    </div>
+                    <h4 class="mb-0">Criar Conta</h4>
+                    <p class="text-muted">Preencha seus dados para se registrar</p>
+                </div>
+            </div>
+            <div class="card-body">
+                {% if messages %}
+                    <div id="messages">
+                        {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }}">
+                                <i class="fas fa-{% if message.tags == 'success' %}check-circle{% else %}exclamation-circle{% endif %} me-2"></i>
+                                {{ message }}
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <script>
+                        setTimeout(function() {
+                            var messages = document.getElementById("messages");
+                            if (messages) {
+                                messages.style.display = "none";
+                            }
+                        }, 3000);
+                    </script>
+                {% endif %}
+
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Nome</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-user"></i></span>
+                            {{ form.nome }}
+                        </div>
+                        {% if form.nome.errors %}
+                            <small class="text-danger"><i class="fas fa-exclamation-circle me-1"></i>{{ form.nome.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">E-mail</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                            {{ form.email }}
+                        </div>
+                        {% if form.email.errors %}
+                            <small class="text-danger"><i class="fas fa-exclamation-circle me-1"></i>{{ form.email.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            {{ form.senha }}
+                            <button type="button" class="btn btn-outline-secondary toggle-password" data-target="id_senha">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        <div class="password-rules">
+                            <p class="mb-2 fw-bold">Sua senha deve conter:</p>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> Mínimo 8 caracteres</li>
+                                <li><i class="fas fa-check-circle"></i> Pelo menos 1 letra maiúscula</li>
+                                <li><i class="fas fa-check-circle"></i> Pelo menos 1 número</li>
+                                <li><i class="fas fa-check-circle"></i> Pelo menos 1 caractere especial (!@#$%^&*)</li>
+                            </ul>
+                        </div>
+                        {% if form.senha.errors %}
+                            <small class="text-danger"><i class="fas fa-exclamation-circle me-1"></i>{{ form.senha.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+                    
+                    <div class="mb-4">
+                        <label class="form-label">Confirmar Senha</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                            {{ form.confirmar_senha }}
+                            <button type="button" class="btn btn-outline-secondary toggle-password" data-target="id_confirmar_senha">
+                                <i class="fas fa-eye"></i>
+                            </button>
+                        </div>
+                        {% if form.confirmar_senha.errors %}
+                            <small class="text-danger"><i class="fas fa-exclamation-circle me-1"></i>{{ form.confirmar_senha.errors.0 }}</small>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 mb-3">
+                        <i class="fas fa-user-plus me-2"></i>Criar Conta
+                    </button>
+                    <a href="{% url 'login' %}" class="btn btn-secondary w-100">
+                        <i class="fas fa-arrow-left me-2"></i>Voltar para Login
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.querySelectorAll(".toggle-password").forEach(button => {
+            button.addEventListener("click", function () {
+                let input = document.getElementById(this.getAttribute("data-target"));
+                let icon = this.querySelector("i");
+    
+                if (input.type === "password") {
+                    input.type = "text";
+                    icon.classList.remove("fa-eye");
+                    icon.classList.add("fa-eye-slash");
+                } else {
+                    input.type = "password";
+                    icon.classList.remove("fa-eye-slash");
+                    icon.classList.add("fa-eye");
+                }
+            });
+        });
+    </script>
+</body>
+</html>
