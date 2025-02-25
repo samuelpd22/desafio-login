@@ -68,7 +68,7 @@ A aplicação segue o padrão **MVC (Model-View-Controller)**:
 ### 📥 6.1 Clonando o Repositório
 ```sh
 git clone https://github.com/samuelpd22/desafio-login.git
-cd fidelity
+cd desafio-login
 ```
 
 ### 🏗️ 6.2 Construindo e Subindo os Containers
