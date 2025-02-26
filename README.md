@@ -19,7 +19,12 @@ A **Fidelity** é um sistema de autenticação de usuários, oferecendo funciona
 - CSRF Token (Django)
 - Hash de senha (Django Auth)
 
-## 🏰 3. Arquitetura da Aplicação
+## ⚙️ 3. Requisitos
+Para executar a aplicação corretamente, é necessário ter o **Docker** instalado em seu computador.
+
+- [Instalar Docker](https://www.docker.com/get-started)
+
+## 🏰 4. Arquitetura da Aplicação
 A aplicação segue o padrão **MVC (Model-View-Controller)**:
 
 ### 📂 Backend (Django)
@@ -31,47 +36,44 @@ A aplicação segue o padrão **MVC (Model-View-Controller)**:
 - **Login e Registro**: Páginas interativas com **Bootstrap**.
 - **Validação de Formulários**: Implementada via **JavaScript**.
 
-## 🔄 4. Fluxos do Sistema
+## 🔄 5. Fluxos do Sistema
 
-### 🔑 4.1 Fluxo de Login
+### 🔑 5.1 Fluxo de Login
 1. Usuário acessa a página de login.
 2. Informa e-mail e senha.
 3. O sistema valida os dados e autentica o usuário.
 4. **Se houver erro**, exibe uma mensagem.
 5. **Se correto**, redireciona para o menu principal.
 
-### 📝 4.2 Fluxo de Registro
+### 📝 5.2 Fluxo de Registro
 1. Usuário acessa a página de registro.
 2. Preenche nome, e-mail e senha.
 3. O sistema valida e cria a conta.
 4. **Se sucesso**, redireciona para a tela de login.
 5. **Se erro**, exibe mensagem.
 
+## 🖥️ 6. Telas do Sistema
 
-## 🖥️ 5. Telas do Sistema
-
-### 🏠 5.1 Tela de Login
+### 🏠 6.1 Tela de Login
 - Campo de **e-mail** e **senha**.
 - Botão para **exibir senha**.
 - Link para **"Esqueceu a senha?"** (Função não implementada).
 
-### 🆕 5.2 Tela de Registro
+### 🆕 6.2 Tela de Registro
 - Formulário para cadastro de novo usuário.
 - Botão de **confirmação**.
 
-### 🔄 5.3 Tela de Recuperação de Senha
-- Campo para inserir **e-mail**.
-- Botão para envio do **link de redefinição**.
 
-## 🛠️ 6. Como Executar a Aplicação no Docker
 
-### 📥 6.1 Clonando o Repositório
+## 🛠️ 7. Como Executar a Aplicação no Docker
+
+### 📥 7.1 Clonando o Repositório
 ```sh
 git clone https://github.com/samuelpd22/desafio-login.git
 cd desafio-login
 ```
 
-### 🏗️ 6.2 Construindo e Subindo os Containers
+### 🏗️ 7.2 Construindo e Subindo os Containers
 ```sh
 docker-compose up --build
 ```
@@ -79,7 +81,7 @@ Isso iniciará dois containers:
 - `db`: Servidor PostgreSQL.
 - `api`: Aplicação Django.
 
-### 🌍 6.3 Acessando a Aplicação
+### 🌍 7.3 Acessando a Aplicação
 Acesse no navegador: [http://localhost:8000](http://localhost:8000)
 
 Para verificar os containers em execução:
@@ -97,7 +99,7 @@ Se precisar rodar migrações manualmente:
 docker exec -it django_api python manage.py migrate
 ```
 
-## 🗄️ 7. Banco de Dados
+## 🗄️ 8. Banco de Dados
 
 ### 📑 Tabelas Principais:
 #### **Usuários**
@@ -109,6 +111,6 @@ docker exec -it django_api python manage.py migrate
 | senha_hash   | String      |
 | data_criacao | Timestamp   |
 
-
-## 📌 8. Considerações Finais
+## 📌 9. Considerações Finais
 Essa documentação fornece uma visão geral sobre a arquitetura e funcionamento da aplicação **Fidelity**. Podemos expandi-la com **diagramas** e **detalhes técnicos adicionais** conforme necessário. 🚀
+
