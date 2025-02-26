@@ -49,8 +49,8 @@ A aplicação segue o padrão **MVC (Model-View-Controller)**:
 1. Usuário acessa a página de registro.
 2. Preenche nome, e-mail e senha.
 3. O sistema valida e cria a conta.
-4. **Se sucesso**, redireciona para a tela de login.
-5. **Se erro**, exibe mensagem.
+4. **Se sucesso**, exibe mensagem de sucesso.
+5. **Se erro**, exibe mensagem de erro.
 
 ## 🖥️ 6. Telas do Sistema
 
@@ -112,5 +112,4 @@ docker exec -it django_api python manage.py migrate
 | data_criacao | Timestamp   |
 
 ## 📌 9. Considerações Finais
-Essa documentação fornece uma visão geral sobre a arquitetura e funcionamento da aplicação **Fidelity**. Podemos expandi-la com **diagramas** e **detalhes técnicos adicionais** conforme necessário. 🚀
-
+Essa documentação fornece uma visão geral sobre a arquitetura e funcionamento da aplicação **Fidelity**.
