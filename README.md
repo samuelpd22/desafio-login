@@ -1,7 +1,7 @@
 # 📌 Documentação da Aplicação Fidelity
 
 ## 📚 1. Visão Geral
-A **Fidelity** é um sistema de autenticação de usuários, oferecendo funcionalidades de **login, registro e recuperação de senha**. O backend foi desenvolvido em **Django** com **PostgreSQL**, enquanto o frontend utiliza **Bootstrap** e **JavaScript** para uma interface responsiva.
+A **Fidelity** é um sistema de autenticação de usuários, oferecendo funcionalidades de **login e registro**. O backend foi desenvolvido em **Django** com **PostgreSQL**, enquanto o frontend utiliza **Bootstrap** e **JavaScript** para uma interface responsiva.
 
 ## 🛠️ 2. Tecnologias Utilizadas
 ### Backend
